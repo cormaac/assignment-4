@@ -7,7 +7,6 @@ public class setup extends PApplet {
     	PApplet.main("setup");
     }
     
-	//public PImage planeImage;
     plane p;
     background b;
     
@@ -18,18 +17,35 @@ public class setup extends PApplet {
  
     public void setup() {
     	p = new plane(this);
-    	b = new background(this);
-    	//planeImage = loadImage("planeBlue1.png");
-    	
+    	b = new background(this);    	
     }
  
     public void draw() 
     {
     	background(0);
-    	//image(planeImage,0,0);
     	p.display();
+    	//p.move();
     	b.display();
     	b.move();
     	
-    }    
+    }
+    public void keyPressed() 
+    {
+    	if (keyCode == UP) 
+    	{
+    		p.dir(0,-5);
+    	} 
+    	else if (keyCode == DOWN) 
+    	{
+    		p.dir(0,5);
+    	}
+    	else if (keyCode == RIGHT) 
+    	{
+    		p.dir(5,0);
+    	} 
+    	else if (keyCode == LEFT) 
+    	{
+    		p.dir(-5,0);
+    	} 
+    }
 }
