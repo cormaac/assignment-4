@@ -2,18 +2,24 @@ import processing.core.PApplet;
 
 public class plane {
 	PApplet parent;	
-	float Xdir;
-	float Ydir;
+	float Xdir=0;
+	float Ydir=0;
 	
 	plane(PApplet p)
 	{
 		parent = p;
+		Xdir=parent.width/2;
+		Ydir=parent.height/2;
 	}
 	
 	void dir(int x,int y)
 	{
-		Xdir=x;
-		Ydir=y;
+		Xdir=Xdir+x;
+		Ydir=Ydir+y;
+	}
+	void angle(int x)
+	{
+		
 	}
 	
 
