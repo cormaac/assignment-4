@@ -1,0 +1,44 @@
+import processing.core.PApplet;
+
+public class background {
+	PApplet parent;	
+	
+	float x;
+	float y;
+	
+	float[] starsY = new float[40];
+	float[] starsX = new float[40];
+	
+	
+	background(PApplet p)
+	{
+		parent = p;
+		x = parent.width/2;
+	    y = parent.random(parent.height,500);
+	    for(int i=0; i<starsY.length; i++)
+	    {
+	    	starsY[i]= (parent.random(0,parent.height));
+	    }
+	    for(int i=0; i<starsX.length; i++)
+	    {
+	    	starsX[i]= (parent.random(0,parent.height));
+	    }
+	}
+		
+	void display()
+	  {
+	    parent.stroke(255);
+	    parent.fill(255);
+	    for (int i=0; i<starsY.length; i++)
+	    {
+	    	parent.ellipse(starsX[i],starsY[i],10,10);
+	    }
+	  }
+	  void move()
+	  {
+	    x--;
+	    if (x==0) x=parent.width;
+	  }
+	
+
+}
