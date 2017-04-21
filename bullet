@@ -1,0 +1,26 @@
+import processing.core.PApplet;
+
+public class bullet {
+	PApplet parent;	
+	float x;
+	float y;
+
+	public bullet(PApplet p) 
+	{
+		parent = p;
+		x=parent.width/2;
+		y=parent.height/2;
+		
+	}
+	void display()
+	{
+		parent.ellipse(x,y, 8, 8);
+	}
+	
+	void move()
+	{
+		x= x+1;
+	}
+	
+
+}
