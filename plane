@@ -1,6 +1,7 @@
 import processing.core.PApplet;
 
 public class plane {
+	int speed=20;
 	PApplet parent;	
 	float Xdir=0;
 	float Ydir=0;
@@ -8,14 +9,14 @@ public class plane {
 	plane(PApplet p)
 	{
 		parent = p;
-		Xdir=parent.width/2;
-		Ydir=parent.height/2;
+		Xdir=0;
+		Ydir=0;
 	}
 	
 	void dir(int x,int y)
 	{
-		Xdir=Xdir+x;
-		Ydir=Ydir+y;
+		Xdir=Xdir+x*speed;
+		Ydir=Ydir+y*speed;
 	}
 	void angle(int x)
 	{
@@ -25,8 +26,11 @@ public class plane {
 
 	 void display() 
 	 {
+		 parent.pushMatrix();
+		 parent.translate(parent.width/2, parent.height/2);
 		//image(planeImage,parent.height/2,parent.width/2);
+		 
 		 parent.rect(Xdir,Ydir,50,10);
-	}
-
+		 parent.popMatrix();
+	 }
 }
