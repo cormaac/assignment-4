@@ -9,6 +9,7 @@ public class setup extends PApplet {
     public static void main(String[] args) {
     	PApplet.main("setup");
     }
+    int score=0;
     
     
     plane p;
@@ -21,7 +22,8 @@ public class setup extends PApplet {
         size(500,500);     
     }
  
-    public void setup() {
+    public void setup() 
+    {
     	p = new plane(this);
     	b = new background(this);
     	
@@ -29,6 +31,7 @@ public class setup extends PApplet {
     	{
     		enemy[i]= new enemies(i+500,i*80+80, this);
     	}
+    	textSize(40);
 
     }
  
@@ -39,15 +42,20 @@ public class setup extends PApplet {
     	
     	b.display();
     	b.move();
+    	p.dir();
+    	text("Score: "+ score,0,40);
     	
-    	for (bullet b : Bullet) {
+    	for (bullet b : Bullet) 
+    	{
     	    b.display();
     	    b.move();
-    	   for (int j = 0; j < enemy.length; j++) {
+    	   for (int j = 0; j < enemy.length; j++) 
+    	   {
     	        if (b.hits(enemy[j])) 
     	        {
-    	        	println("hit");
+    	        	score++;
     	        }
+    	   }
     	}
     	
     	
@@ -57,11 +65,16 @@ public class setup extends PApplet {
     		enemy[i].move();
     	}
     }
+    public void keyReleased() {
+    	  if (key != ' ') {
+    	    p.setDir(0,0);
+    	  }
+    	}
     public void keyPressed() 
     {
     	if (keyCode == UP) 
     	{
-    		p.dir(0,-1);
+    		p.setDir(0,-1);
     	} 
     	else if (key == ' ') 
    	 	{
@@ -70,15 +83,15 @@ public class setup extends PApplet {
    	 	}
     	else if (keyCode == DOWN) 
     	{
-    		p.dir(0,1);
+    		p.setDir(0,1);
     	}
     	else if (keyCode == RIGHT) 
     	{
-    		p.dir(1,0);
+    		p.setDir(1,0);
     	} 
     	else if (keyCode == LEFT) 
     	{
-    		p.dir(-1,0);
+    		p.setDir(-1,0);
     	} 
     }
 }
