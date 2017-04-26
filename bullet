@@ -4,23 +4,41 @@ public class bullet {
 	PApplet parent;	
 	float x;
 	float y;
+	float r=4;
+	boolean toDelete=false;
 
-	public bullet(PApplet p) 
+	public bullet(PApplet p, float i, float j) 
 	{
 		parent = p;
-		x=parent.width/2;
-		y=parent.height/2;
+		x=i;
+		y=j;
 		
 	}
 	void display()
 	{
-		parent.ellipse(x,y, 8, 8);
+		parent.noStroke();
+		parent.fill(0,255,0);
+		parent.rect(x,y, r*2, r*2);
 	}
 	
 	void move()
 	{
-		x= x+1;
+		x++;
+	}
+	
+	 boolean hits(enemies enemy) {
+		    float d = PApplet.dist(this.x, this.y, enemy.x, enemy.y);
+		    if (d < this.r + enemy.r) 
+		    {
+		      return true;
+		    } else {
+		      return false;
+		    }
+		  }
+	 void clear() 
+	 {
+		   this.toDelete = true;
+	}
 	}
 	
 
-}
