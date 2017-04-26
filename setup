@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import processing.core.PImage;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
@@ -24,6 +25,7 @@ public class setup extends PApplet {
  
     public void setup() 
     {
+        //PImage planeImage = loadImage("planeBlue1.png");
     	p = new plane(this);
     	b = new background(this);
     	
@@ -39,6 +41,7 @@ public class setup extends PApplet {
     {
     	background(0);
     	p.display();
+    	//image(planeImage,height/2,width/2);
     	
     	b.display();
     	b.move();
@@ -53,10 +56,12 @@ public class setup extends PApplet {
     	   {
     	        if (b.hits(enemy[j])) 
     	        {
+    	        	b.clear();
     	        	score++;
     	        }
     	   }
     	}
+    	
     	
     	
     	for(int i=0; i<enemy.length; i++)
@@ -64,7 +69,18 @@ public class setup extends PApplet {
     		enemy[i].display();
     		enemy[i].move();
     	}
+    	
+    	for (int i = Bullet.size()-1; i >= 0; i--) 
+        {
+            bullet b = Bullet.get(i);
+            if (b.toDelete) 
+            {
+              Bullet.remove(i);
+            }
+        }
     }
+
+        
     public void keyReleased() {
     	  if (key != ' ') {
     	    p.setDir(0,0);
@@ -78,7 +94,7 @@ public class setup extends PApplet {
     	} 
     	else if (key == ' ') 
    	 	{
-    		bullet Bull = new bullet(this, plane.Xdir+50, plane.Ydir+5);
+    		bullet Bull = new bullet(this, plane.Xdir+50, plane.Ydir+25);
     		Bullet.add(Bull);
    	 	}
     	else if (keyCode == DOWN) 
