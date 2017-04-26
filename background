@@ -3,18 +3,14 @@ import processing.core.PApplet;
 public class background {
 	PApplet parent;	
 	
-	float x;
-	float y;
 	
-	float[] starsY = new float[40];
-	float[] starsX = new float[40];
+	float[] starsY = new float[50];
+	float[] starsX = new float[50];
 	
 	
 	background(PApplet p)
 	{
 		parent = p;
-		x = parent.width/2;
-	    y = parent.random(parent.height,500);
 	    for(int i=0; i<starsY.length; i++)
 	    {
 	    	starsY[i]= (parent.random(0,parent.height));
@@ -38,11 +34,11 @@ public class background {
 	  {
 		 for(int i=0; i < starsX.length; i++)
 		    {
-		    	starsX[i]--;		    	
+		    	starsX[i]--;
 		    }
 		 for(int i=0; i < starsX.length; i++)
 		    {
-			    if (starsX[i]<5) starsX[i]=parent.width;
+			    if (starsX[i]<10) starsX[i]=parent.width;
 		    	
 		    }
 		 
