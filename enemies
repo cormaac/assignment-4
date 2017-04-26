@@ -4,6 +4,8 @@ public class enemies {
 	PApplet parent;	
 	float x;
 	float y;
+	static float r=30;
+	float speed=1;
 
 	public enemies(int i, int j,PApplet p) {
 		parent = p;
@@ -13,8 +15,16 @@ public class enemies {
 	}
 	void display()
 	{
-		parent.ellipse(x,y, 60, 60);
+		parent.noStroke();
+		parent.fill(255,0,0);
+		parent.ellipse(x,y, r*2, r*2);
 	}
-	
+	void move()
+	{
+		x=(float) (x-0.5);
+		y=(float) (y-0.5);
+		if (x==0) x=parent.width;
+		if(y==0) y=parent.height;
+	}
 
 }
