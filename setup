@@ -12,7 +12,6 @@ public class setup extends PApplet {
     }
     int score=0;
     
-    
     plane p;
     background b;
     enemies[] enemy = new enemies[5];
@@ -62,12 +61,16 @@ public class setup extends PApplet {
     	   }
     	}
     	
-    	
-    	
+
     	for(int i=0; i<enemy.length; i++)
     	{
     		enemy[i].display();
     		enemy[i].move();
+    		if (enemy[i].x==p.x) 
+    		{
+    			text("game over",50,50);
+    			frameRate(0);
+    		}
     	}
     	
     	for (int i = Bullet.size()-1; i >= 0; i--) 
